@@ -9,6 +9,7 @@ function hostnameForRequest(req){
 }
 
 var server = http.createServer(function(req, res){
+  console.log('connected to ' + req.headers['host'] + req.url);
   fs.readFile(path.join(HOME, '.proxy.pac'), function(err, file){
     if(err){
       res.statusCode = 500;
@@ -24,4 +25,3 @@ var server = http.createServer(function(req, res){
 });
 
 server.listen(7799);
-
